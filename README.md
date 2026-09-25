@@ -4,7 +4,7 @@
 
 An independent retail real estate studio, with a first activity for **FIN 355**. A six-shop Japanese plaza becomes a property to inspect from the perspective of its landlord.
 
-**Status: review prototype.** The repository contains the working static page; GitHub Pages has not been enabled. Website cards are prepared separately for review.
+**Status: approved prototype · Version 0.1.0.** The working static page is available in this repository. Public website deployment is pending; the prepared FIN 355, Teaching and Labs entries will link directly to the studio once it is live.
 
 ## Explore the prototype
 
@@ -53,8 +53,38 @@ Run `node tests/model.cjs` for the financial checks. For interface checks, insta
 
 This is a static HTML/CSS/JavaScript project. No server calculations, accounts, databases, analytics or API keys are required. Student inputs remain in the page and reset on reload; downloads are generated locally. The optional Japanese font request uses Google Fonts; the scene has a system-font fallback.
 
-After prototype review, the intended website address is `https://desenlin.com/ame-quarter/`, with a peer **CRE studio** card beside Site Feasibility Sandbox and the redevelopment case. The project can grow across courses while retaining a FIN 355 association.
+The planned website address is `https://desenlin.com/ame-quarter/`, with a peer **CRE studio** card beside Site Feasibility Sandbox and the redevelopment case. This address is not yet published. The project can grow across courses while retaining a FIN 355 association.
+
+The complete portable studio is approximately **0.83 MB**; the modular site loads the 3-D scene only when requested. Three.js rendering runs on the visitor's device. GitHub serves static files; it does not render each frame. See the [hosting audit](docs/hosting-audit.md) for file sizes, bandwidth estimates and graphics limits.
+
+## Educational scope and validation
+
+All tenants, lease terms, rentable areas and investment assumptions are hypothetical. The district is an illustrative design, not a surveyed property, appraisal, verified market observation or code-compliance assessment. Financial outputs depend on the stated timing, recovery and discount-rate assumptions.
+
+Automated checks cover the lease calculations, timing scenarios, interface interactions and scene structure. These checks do not establish device-specific frame rates or replace testing on student laptops and phones. See [review notes](docs/review-notes.md) for the validation scope.
+
+This educational illustration is not financial, investment, tax, legal, or appraisal advice. The project is created by Desen Lin for instructional purposes; it does not imply endorsement by California State University, Fullerton or the California State University.
+
+## Citation
+
+GitHub's **Cite this repository** feature uses [`CITATION.cff`](CITATION.cff). Suggested citation:
+
+> Lin, D. (2026). *Ame Quarter: CRE studio* (Version 0.1.0) [Computer software]. https://github.com/desenlin/ame-quarter
+
+For reproducible discussion of a particular result, also record the commit used and the edited assumptions. Citation acknowledges the source; it does not grant reuse rights.
 
 ## Attribution and reuse
 
-The bundled Three.js r128 engine and Reflector helper are MIT-licensed; see `scene/vendor/LICENSE-THREE.txt`. The existing glyph data attribution is preserved in `scene/vendor/LICENSE-DEJAVU.txt`. See `ATTRIBUTION.md`. No new license for the original project content or code is selected in this prototype.
+Copyright © 2026 Desen Lin, to the extent copyright applies. **No project-wide open-source or Creative Commons license has been granted for the original Ame Quarter code or educational content.** See [LICENSE.md](LICENSE.md). Public repository access is not a general permission to reuse its original material.
+
+Third-party and separately licensed material retain their own terms:
+
+- Three.js r128 and the Reflector helper: [MIT license](scene/vendor/LICENSE-THREE.txt).
+- DejaVu font outlines: [bundled font license](scene/vendor/LICENSE-DEJAVU.txt).
+- Optional Noto Sans JP: externally loaded through Google Fonts, with no font binary bundled.
+
+See [ATTRIBUTION.md](ATTRIBUTION.md) for sources and scope. University names and marks are excluded from any reuse permission. Existing licenses attached to separately licensed material are not withdrawn or changed by this notice.
+
+## Maintenance
+
+Keep application changes focused, run the relevant checks, and regenerate the static entry with `python3 build.py` when source files change. Do not commit development dependencies, generated archives, credentials or student information. This prototype has no account system, stored submissions or backend data service.

@@ -28,4 +28,6 @@ Do not present modeled rents or physical design features as appraised value, ver
 
 ## Integration status
 
-The separate repository is `desenlin/ame-quarter`. Proposed Labs/Teaching cards sit immediately after the redevelopment case as a peer of both existing projects. The FIN 355 README row links to the prototype repository until a live studio URL is available. Website cards should remain unmerged until the studio is reviewed and published.
+The separate repository is `desenlin/ame-quarter`. The prototype is approved. Prepared Labs/Teaching cards sit immediately after the redevelopment case as a peer of both existing projects. The FIN 355 README row now targets the same planned live studio URL. FIN355 PR #8 and academic-website PR #27 remain unmerged until public hosting is explicitly approved, enabled and verified.
+
+The repository includes a versioned citation (`CITATION.cff`) and an explicit rights notice (`LICENSE.md`). No new open reuse license is granted for original project material; third-party and separately licensed components retain their existing terms.
