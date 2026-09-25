@@ -13,11 +13,11 @@ An independent retail real estate studio, with a first activity for **FIN 355**.
 3. Select a premise on the ground-floor leasing plan. Read its lease, then open the rent roll or landlord activity.
 4. Choose **Explore 3-D** to enter the existing district. The leasing activity runs without WebGL.
 
-The default **Balanced** graphics profile retains geometry, direct lighting, the two weather/lighting scenes, and a directional shadow. **Full reflections** restores planar reflections, six storefront shadow maps, and higher resolution. The scene pauses when hidden and can be closed to release its iframe.
+The default **Balanced** graphics profile retains geometry, direct lighting, the two weather/lighting scenes, and a directional shadow. **Full reflections** restores planar reflections, six storefront shadow maps, and higher resolution. The scene pauses when hidden and can be closed to release its iframe. **Open 3-D in new tab** opens the district at full-window size with the selected graphics setting.
 
 ## First activity: renew or re-lease?
 
-Midori occupies 450 SF and its hypothetical lease expires on December 31, 2027. Compare renewal with a new tenant over January 2028–December 2032. Change offered rent, escalation, downtime, free rent, tenant improvements, commission and discount rate. The model reports monthly-discounted NPV and calendar-year operating and leasing cash flows. Download the comparison with a written recommendation.
+Midori occupies 450 SF and its hypothetical lease expires on December 31, 2027. Compare renewal with a new tenant over January 2028–December 2032. Change offered rent, escalation, downtime, free rent, tenant improvements, commission and discount rate. The model reports monthly-discounted NPV and calendar-year operating and leasing cash flows. Discussion questions help students interpret the result; there is no comparison download or written-response form.
 
 The defaults deliberately favor renewal despite the new tenant’s higher rent. This is a teaching illustration, not an estimated market outcome.
 
@@ -27,6 +27,7 @@ The defaults deliberately favor renewal despite the new tenant’s higher rent. 
 - **Rent roll:** all six leases, area-weighted expiration exposure and annual landlord operating income.
 - **Landlord activity:** one decision, two offers, explicit assumptions and transparent cash flows.
 - **Assumptions:** modeled areas, recovery rules, timing and exclusions.
+- **How 3-D works:** an accessible introduction to Three.js, implemented scene features, possible student extensions and device-side rendering.
 
 All six rent-roll premises are ground-floor retail. Decorative upper structures are not additional rentable units. Areas are rounded assumptions, not surveyed measurements. There is no automatic relationship between appearance and rent, traffic or sales.
 

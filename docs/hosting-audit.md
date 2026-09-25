@@ -33,6 +33,10 @@ Official sources, checked for this audit:
 
 A rough transfer budget is visits × downloaded bytes. At about 0.83 MB for a full portable load, 1,000 uncached loads are about 0.83 GB before HTTP compression, caching and optional font requests. This is an estimate, not a traffic guarantee. A separate project repository improves organization but does not make resource usage unlimited.
 
+## Rendering versus hosting usage
+
+Rendering runs in each visitor’s browser on their own device. Orbiting, walking, weather changes and animation do not consume GitHub GPU time or GitHub Actions minutes and do not stream a new image from the server each frame. New or uncached page loads do consume hosting bandwidth; heavy traffic can approach GitHub Pages’ soft bandwidth limit. Opening 3-D in a separate tab uses the same scene assets and the browser may reuse its cached files.
+
 ## Browser constraints
 
 The constructed scene contains **1,306 mesh nodes**, **16,139 instanced copies**, **322 static material/geometry batches**, **624 materials** and **166 textures**. These counts are not frame-by-frame draw calls: visibility, material groups, shadow passes and reflections affect actual work.
