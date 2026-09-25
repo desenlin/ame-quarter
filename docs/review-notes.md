@@ -7,7 +7,8 @@
 - **Stack plan:** a ground-floor leasing plan is more legible for this property than an artificial multistory stack. Position and proportions follow the simplified district footprints; rentable SF remains an explicit teaching assumption.
 - **Lease detail:** current economics are immediately visible; commencement, rent steps, expense basis and monthly payment sit in an expandable section. The rent roll provides the property-wide comparison.
 - **Activity:** compare renewal and re-leasing of Midori. A common end date makes opportunity cost visible without adding a terminal-value assumption. Downtime shortens the new lease within the common window.
-- **Graphics:** the default view is a lightweight plan. The existing district is available on request, with Balanced and Full reflections modes. The scene is suspended while reading other panels.
+- **Graphics:** the default view is **Explore 3-D Map** with Balanced graphics and native iframe lazy loading. The leasing-plan switch removes the scene. An unavailable renderer automatically returns to the plan. The scene is suspended while reading other panels.
+- **Catalog identity:** website and course cards use **3-D Retail Plaza & Leasing**, with the **CRE studio** tag. The page and project name remain **Ame Quarter**. Descriptions lead with exploring the interactive 3-D plaza.
 - **Frame:** the description spans the shared content width. The full FIN 355 course badge, secondary CRE studio badge and footer disclaimer match the Atlas/FIN 355 frame. Navigation follows the header immediately, with the property context beneath it.
 - **Premise names:** the selector pairs each tenant name with its use.
 - **Simplified activity:** no comparison download or written-response box; discussion questions remain.
@@ -16,7 +17,7 @@
 ## Verified
 
 - Financial tests cover 36 combinations of downtime, concessions and discount rate; an independent annuity check; recovery allocation; escalation dates; TI payment timing; commissions; annual cash reconciliation; invalid assumptions; and directional sensitivity.
-- DOM-emulation checks exercise all six selections, the native premise selector, rent-roll navigation, activity navigation, assumption changes, invalid input states, reset, the rent-roll export, separate-tab scene links in both portable and modular builds, duplicate IDs and label associations.
+- DOM-emulation checks cover automatic 3-D startup, readiness, pause/resume, removal via the leasing-plan switch, stale-frame isolation, unavailable-renderer fallback and retry. They also exercise all six selections, the native premise selector, rent-roll navigation, activity navigation, assumption changes, invalid input states, reset, the rent-roll export, separate-tab scene links in both portable and modular builds, duplicate IDs and label associations.
 - Both graphics profiles pass the existing geometry/navigation regression harness: six enterable shops; 18 tour stops; collision-free routes; doors; orbit/walk controls; roof toggles; night/dusk/light changes; streetlight directions; crossings and square scene bounds. Suspension and resume are checked.
 - Three.js geometry and materials are constructed during the scene audit; counts and raw resource estimates are saved in `scene-audit-*.json`.
 

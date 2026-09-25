@@ -4,17 +4,17 @@
 
 An independent retail real estate studio, with a first activity for **FIN 355**. A six-shop Japanese plaza becomes a property to inspect from the perspective of its landlord.
 
-**Status: published prototype · Version 0.1.0.** [Open the CRE studio](https://desenlin.com/ame-quarter/). The independent project is listed on the FIN 355 course page and the academic website's Teaching and Labs pages.
+**Status: published prototype · Version 0.1.1.** [Open the CRE studio](https://desenlin.com/ame-quarter/). The project remains **Ame Quarter**; its public tool-card title is **3-D Retail Plaza & Leasing**, with the **CRE studio** tag. It is listed on the FIN 355 course page and the academic website's Teaching and Labs pages.
 
 ## Explore the prototype
 
 1. Open the [published studio](https://desenlin.com/ame-quarter/) in a current browser.
-2. Select a premise on the ground-floor leasing plan. Read its lease, then open the rent roll or landlord activity.
-3. Choose **Explore 3-D** to enter the existing district. The leasing activity runs without WebGL.
+2. Start in **Explore 3-D Map**: orbit the plaza, walk into shops or take a guided tour. Select a tenant in the premise file and use **Visit** to go there.
+3. Choose **Leasing plan** for the clickable ground-floor layout, or open the rent roll and landlord activity. Switching to the plan removes the 3-D scene; financial controls work without WebGL.
 
 For local development, serve this folder with `python3 -m http.server 8000` and open `http://localhost:8000/`.
 
-The default **Balanced** graphics profile retains geometry, direct lighting, the two weather/lighting scenes, and a directional shadow. **Full reflections** restores planar reflections, six storefront shadow maps, and higher resolution. The scene pauses when hidden and can be closed to release its iframe. **Open 3-D in new tab** opens the district at full-window size with the selected graphics setting.
+The default **Balanced** graphics profile retains geometry, direct lighting, the two weather/lighting scenes, and a directional shadow. **Full reflections** restores planar reflections, six storefront shadow maps, and higher resolution. The scene pauses while reading other panels or when offscreen. Choosing **Leasing plan** removes its iframe; returning to 3-D starts a fresh scene with the selected graphics setting. If WebGL is unavailable, the studio automatically shows the leasing plan with a short notice. **Open 3-D in new tab** opens the district at full-window size with the selected graphics setting.
 
 ## First activity: renew or re-lease?
 
@@ -24,7 +24,7 @@ The defaults deliberately favor renewal despite the new tenant’s higher rent. 
 
 ## Information structure
 
-- **Property & premises:** a clickable ground-floor leasing plan, persistent premise file and on-demand 3-D view.
+- **Property & premises:** the default interactive 3-D map, a clickable ground-floor leasing plan and a persistent premise file.
 - **Rent roll:** all six leases, area-weighted expiration exposure and annual landlord operating income.
 - **Landlord activity:** one decision, two offers, explicit assumptions and transparent cash flows.
 - **Assumptions:** modeled areas, recovery rules, timing and exclusions.
@@ -56,7 +56,7 @@ This is a static HTML/CSS/JavaScript project. No server calculations, accounts, 
 
 The website is published at [desenlin.com/ame-quarter/](https://desenlin.com/ame-quarter/) through GitHub Pages, using the `main` branch and repository root. A peer **CRE studio** card sits beside Site Feasibility Sandbox and the redevelopment case. The project can grow across courses while retaining a FIN 355 association.
 
-The complete portable studio is approximately **0.83 MB**; the modular site loads the 3-D scene only when requested. Three.js rendering runs on the visitor's device. GitHub serves static files; it does not render each frame. See the [hosting audit](docs/hosting-audit.md) for file sizes, bandwidth estimates and graphics limits.
+The complete portable studio is approximately **0.83 MB**. The modular interface is about **0.05 MB**, and its automatically opened 3-D scene adds about **0.76 MB** before HTTP compression and caching. The iframe uses browser-native lazy loading, so browsers can defer it when far from the viewport. Three.js rendering runs on the visitor's device. GitHub serves static files; it does not render each frame. See the [hosting audit](docs/hosting-audit.md) for file sizes, bandwidth estimates and graphics limits.
 
 ## Educational scope and validation
 
@@ -70,7 +70,7 @@ This educational illustration is not financial, investment, tax, legal, or appra
 
 GitHub's **Cite this repository** feature uses [`CITATION.cff`](CITATION.cff). Suggested citation:
 
-> Lin, D. (2026). *Ame Quarter: CRE studio* (Version 0.1.0) [Computer software]. https://github.com/desenlin/ame-quarter
+> Lin, D. (2026). *Ame Quarter: CRE studio* (Version 0.1.1) [Computer software]. https://github.com/desenlin/ame-quarter
 
 For reproducible discussion of a particular result, also record the commit used and the edited assumptions. Citation acknowledges the source; it does not grant reuse rights.
 

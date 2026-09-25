@@ -4,7 +4,7 @@
   const M=window.CRE,$=s=>root.querySelector(s),$$=s=>Array.from(root.querySelectorAll(s));
   const money=n=>new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0}).format(n),num=n=>new Intl.NumberFormat('en-US',{maximumFractionDigits:0}).format(n);
   const date=s=>new Date(s+'T12:00:00Z').toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric',timeZone:'UTC'});
-  let selected='florist',activePage='property',activeView='plan',sceneFrame=null,scenario=structuredClone(M.defaults);
+  let selected='florist',activePage='property',activeView='scene',sceneFrame=null,sceneObserver=null,scenario=structuredClone(M.defaults);
   const scenePath=root.dataset.sceneUrl||'',sceneURLs=new Map();let sceneTemplate=null;
   const summary=M.summary();
   const fact=(k,v,cls='')=>`<div class="${cls}"><dt>${k}</dt><dd>${v}</dd></div>`;
@@ -19,12 +19,32 @@
   function sceneDocument(quality){if(sceneTemplate===null){const payload=document.getElementById('cre-scene-source');if(!payload)return null;sceneTemplate=JSON.parse(payload.textContent);}return sceneTemplate.replace('window.AME_STUDIO_CONFIG={quality:"balanced"}',`window.AME_STUDIO_CONFIG={quality:"${quality}"}`);}
   function sceneURL(quality){if(scenePath){const url=new URL(scenePath,document.baseURI);url.searchParams.set('quality',quality);return url.href;}if(!sceneURLs.has(quality)){const doc=sceneDocument(quality);if(!doc)return null;sceneURLs.set(quality,URL.createObjectURL(new Blob([doc],{type:'text/html;charset=utf-8'})));}return sceneURLs.get(quality);}
   function prepareSceneLink(){const url=sceneURL(graphicsQuality());if(url)$('#open-scene-tab').href=url;return url;}
-  function buildScene(){if(sceneFrame)return;const quality=graphicsQuality(),doc=scenePath?null:sceneDocument(quality);if(!scenePath&&!doc){$('#scene-host').textContent='The 3-D scene is not included in this preview.';return;}sceneFrame=document.createElement('iframe');sceneFrame.title='Ame Quarter interactive 3-D district';sceneFrame.setAttribute('allow','fullscreen');if(scenePath)sceneFrame.src=sceneURL(quality);else sceneFrame.srcdoc=doc;sceneFrame.addEventListener('load',()=>suspendScene(activePage!=='property'||activeView!=='scene'));$('#scene-host').replaceChildren(sceneFrame);prepareSceneLink();}
-  function showView(view){activeView=view;$('#plan-wrap').hidden=view!=='plan';$('#scene-wrap').hidden=view!=='scene';$$('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));if(view==='scene')buildScene();suspendScene(view!=='scene');}
-  function closeScene(){sceneFrame?.remove();sceneFrame=null;showView('plan');}
+  function releaseScene(){sceneObserver?.disconnect();sceneObserver=null;suspendScene(true);sceneFrame?.remove();sceneFrame=null;$('#visit-unit').disabled=true;}
+  function sceneUnavailable(){showView('plan');$('#scene-notice').textContent='The 3-D map could not open in this browser. The leasing plan and all financial activities are available. You can try Explore 3-D Map again.';$('#scene-notice').hidden=false;}
+  function buildScene(){
+    if(sceneFrame)return;
+    const quality=graphicsQuality(),doc=scenePath?null:sceneDocument(quality);
+    if(!scenePath&&!doc){sceneUnavailable();return;}
+    const frame=document.createElement('iframe');sceneFrame=frame;frame.title='Ame Quarter interactive 3-D district';frame.loading='lazy';frame.setAttribute('allow','fullscreen');$('#visit-unit').disabled=true;
+    if(scenePath)frame.src=sceneURL(quality);else frame.srcdoc=doc;
+    frame.addEventListener('load',()=>{
+      if(sceneFrame!==frame)return;
+      const district=frame.contentDocument?.getElementById('ame-district');
+      if(!district){sceneUnavailable();return;}
+      const check=()=>{
+        if(sceneFrame!==frame)return;
+        if(district.dataset.sceneStatus==='unavailable'){sceneUnavailable();return;}
+        if(district.dataset.sceneStatus==='ready'){$('#visit-unit').disabled=false;suspendScene(activePage!=='property'||activeView!=='scene');}
+      };
+      sceneObserver?.disconnect();sceneObserver=new MutationObserver(check);sceneObserver.observe(district,{attributes:true,attributeFilter:['data-scene-status']});check();
+    });
+    frame.addEventListener('error',()=>{if(sceneFrame===frame)sceneUnavailable();});
+    $('#scene-host').replaceChildren(frame);prepareSceneLink();
+  }
+  function showView(view){if(!['plan','scene'].includes(view))return;activeView=view;$('#scene-notice').hidden=true;$('#plan-wrap').hidden=view!=='plan';$('#scene-wrap').hidden=view!=='scene';$$('[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.view===view)));$('#property-view-title').textContent=view==='scene'?'Explore the retail plaza':'Ground-floor leasing plan';$('#property-view-help').textContent=view==='scene'?'Orbit the plaza, tour its shops, or visit the selected premise.':'Select a premise to inspect its lease.';if(view==='scene')buildScene();else releaseScene();}
   function visit(){const scene=sceneFrame?.contentDocument?.getElementById('ame-district'),d=scene?.__district;if(d){d.nav.setMode('walk',d.shops.find(s=>s.id===selected));scene.focus({preventScroll:true});}else $('#visit-unit').textContent='Scene loading · try again shortly';}
   $('#open-scene-tab').addEventListener('click',e=>{if(!prepareSceneLink())e.preventDefault();});
-  $$('.plan-unit').forEach(b=>b.addEventListener('click',()=>select(b.dataset.id)));$('#premise-select').addEventListener('change',e=>select(e.target.value));$$('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));$$('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));$('#close-scene').addEventListener('click',closeScene);$('#scene-quality').addEventListener('change',()=>{sceneFrame?.remove();sceneFrame=null;buildScene();});$('#visit-unit').addEventListener('click',visit);$$('[data-open-activity],#premise-activity').forEach(b=>b.addEventListener('click',()=>{showPage('activity');root.scrollIntoView({behavior:'auto',block:'start'});}));
+  $$('.plan-unit').forEach(b=>b.addEventListener('click',()=>select(b.dataset.id)));$('#premise-select').addEventListener('change',e=>select(e.target.value));$$('[data-page]').forEach(b=>b.addEventListener('click',()=>showPage(b.dataset.page)));$$('[data-view]').forEach(b=>b.addEventListener('click',()=>showView(b.dataset.view)));$('#scene-quality').addEventListener('change',()=>{releaseScene();if(activeView==='scene')buildScene();});$('#visit-unit').addEventListener('click',visit);$$('[data-open-activity],#premise-activity').forEach(b=>b.addEventListener('click',()=>{showPage('activity');root.scrollIntoView({behavior:'auto',block:'start'});}));
   $('#rent-roll').innerHTML=M.premises.map(p=>`<tr><td><button type="button" data-lease="${p.id}">${p.unit} · ${p.name}</button><small>${p.use}</small></td><td class="num">${num(p.area)}</td><td class="num">${money(p.rent)}</td><td class="num">${money(p.area*p.rent)}</td><td>${p.recovery}</td><td>${date(p.expiry)}</td></tr>`).join('');
   $('#rent-roll-total').innerHTML=`<tr><td>Total</td><td class="num">${num(summary.area)}</td><td class="num">${money(summary.base/summary.area)} avg.</td><td class="num">${money(summary.base)}</td><td colspan="2">6 occupied premises</td></tr>`;
   $$('[data-lease]').forEach(b=>b.addEventListener('click',()=>{select(b.dataset.lease);showPage('property');showView('plan');$('#premise-select').focus();}));
@@ -41,6 +61,6 @@
   function csv(rows){return rows.map(r=>r.map(v=>'"'+String(v??'').replaceAll('"','""')+'"').join(',')).join('\r\n');}
   function download(name,rows){const blob=new Blob(['\ufeff'+csv(rows)],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;root.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);}
   $('#export-roll').addEventListener('click',()=>download('ame-quarter-rent-roll.csv',[['Ame Quarter — hypothetical rent roll','As of 2027-01-01'],['Unit','Tenant','Use','Rentable SF','Annual rent per SF USD','Annual base rent USD','Annual recoveries USD','Annual increase percent','Lease start','Lease expiration','Recovery basis'],...M.premises.map(p=>[p.unit,p.name,p.use,p.area,p.rent,p.area*p.rent,M.recovery(p),(p.bump*100).toFixed(2),p.start,p.expiry,p.recovery]),['Total','','',summary.area,'',summary.base,summary.recoveries],['Property operating expenses USD',summary.operating],['Property operating NOI USD',summary.noi]]));
-  select(selected);updateComparison();
-  root.__studio={select,showPage,showView,closeScene,get selected(){return selected;},get scenario(){return structuredClone(scenario);},get activePage(){return activePage;}};
+  select(selected);updateComparison();showView('scene');
+  root.__studio={select,showPage,showView,get selected(){return selected;},get scenario(){return structuredClone(scenario);},get activePage(){return activePage;},get activeView(){return activeView;}};
 })();

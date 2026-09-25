@@ -1,10 +1,11 @@
 (async function(){
   const root=document.getElementById('ame-district');if(!root)return;
-  if(!window.THREE){root.querySelector('[data-status]').textContent='The 3D renderer could not load. Open the complete project to use the bundled renderer.';return;}
+  root.dataset.sceneStatus='loading';
+  if(!window.THREE){root.querySelector('[data-status]').textContent='The 3D renderer could not load. Open the complete project to use the bundled renderer.';root.dataset.sceneStatus='unavailable';return;}
   await Promise.race([document.fonts.ready,new Promise(r=>setTimeout(r,1800))]);
   if(document.fonts.load)await Promise.race([document.fonts.load('500 32px "Noto Sans JP"','雨まち 喫茶 青 こむぎ 月の本棚 夜らーめん みどり花店'),new Promise(r=>setTimeout(r,1800))]);
   const T=THREE,scene=new T.Scene();scene.background=new T.Color('#111e30').convertSRGBToLinear();scene.fog=new T.FogExp2(new T.Color('#17283b').convertSRGBToLinear(),.0025);
-  let renderer;try{renderer=new T.WebGLRenderer({antialias:true,powerPreference:'high-performance'});}catch(e){root.querySelector('[data-status]').textContent='WebGL is unavailable. Please open this model in a browser with hardware acceleration enabled.';return;}
+  let renderer;try{renderer=new T.WebGLRenderer({antialias:true,powerPreference:'high-performance'});}catch(e){root.querySelector('[data-status]').textContent='WebGL is unavailable. Please open this model in a browser with hardware acceleration enabled.';root.dataset.sceneStatus='unavailable';return;}
   const balanced=window.AME_STUDIO_CONFIG?.quality!=='full';
   renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,balanced?1:1.6));renderer.outputEncoding=T.sRGBEncoding;renderer.toneMapping=T.LinearToneMapping;renderer.toneMappingExposure=1.0;renderer.shadowMap.enabled=true;renderer.shadowMap.autoUpdate=false;renderer.shadowMap.needsUpdate=true;renderer.shadowMap.type=T.PCFSoftShadowMap;root.prepend(renderer.domElement);renderer.domElement.setAttribute('aria-label','Ame Quarter: Japanese plaza with rainy night and post-rain dusk views');
   const camera=new T.PerspectiveCamera(40,1,.08,400);camera.position.set(38,34,47);
@@ -43,6 +44,6 @@
   const clock=new T.Clock(),reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
   function tick(){frame=requestAnimationFrame(tick);const dt=Math.min(clock.getDelta(),.05);if(suspended||!visible||document.hidden)return;elapsed+=dt;nav.update(dt,elapsed);weather.update(reduce?0:dt,reduce?0:elapsed,nav.mode,camera);if(elapsed>hideAt&&!help.contains(document.activeElement))help.classList.add('is-hidden');if(!environmentReady&&elapsed>.25&&typeof renderer.getContext==='function')captureEnvironment();if(lightSweep){lightAngle+=dt*.36;const p=environment.profile,rad=Math.hypot(p.position[0],p.position[2]);moon.position.set(Math.cos(lightAngle)*rad,p.position[1],Math.sin(lightAngle)*rad);}renderer.shadowMap.needsUpdate=renderer.shadowMap.needsUpdate||lightSweep||nav.mode!=='mini'||Math.floor(elapsed*8)!==Math.floor((elapsed-dt)*8);renderer.render(scene,camera);}
   root.__district={scene,camera,moon,sky,renderer,controls,K,shops,street,weather,environment,nav,batches,setSuspended(value){suspended=Boolean(value);},get suspended(){return suspended;},get quality(){return balanced?'balanced':'full';},get environmentReady(){return environmentReady;},get environmentCaptures(){return environmentCaptures;},get time(){return elapsed;}};
-  environment.setMode('night');nav.setMode('mini');tick();
+  environment.setMode('night');nav.setMode('mini');tick();root.dataset.sceneStatus='ready';
   const cleanup=new MutationObserver(()=>{if(!root.isConnected){cancelAnimationFrame(frame);ro.disconnect();io.disconnect();controls.dispose();scene.traverse(o=>{if(o.geometry)o.geometry.dispose();});environmentTarget?.dispose();renderer.dispose();cleanup.disconnect();}});cleanup.observe(document.body,{childList:true,subtree:true});
 })();

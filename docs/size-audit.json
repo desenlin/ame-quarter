@@ -1,9 +1,11 @@
 {
+  "audit_date": "2026-09-25",
   "original_scene_standalone_bytes": 760487,
-  "studio_standalone_bytes": 831402,
-  "modular_initial_bytes": 49242,
-  "modular_initial_gzip_estimate_bytes": 16570,
-  "on_demand_scene_bytes": 762531,
+  "studio_standalone_bytes": 833372,
+  "modular_interface_bytes": 51062,
+  "scene_payload_bytes": 760715,
+  "default_visit_bytes": 811777,
+  "default_visit_gzip_estimate_bytes": 230644,
   "largest_file_bytes": 603445,
-  "estimated_1000_full_uncached_visits_MB": 811.77
+  "estimated_1000_full_uncached_visits_MB": 811.78
 }

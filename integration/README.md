@@ -1,9 +1,11 @@
 # Published catalog integration
 
-- `labs.patch`: a third peer real estate card, **Ame Quarter**, with the short tag **CRE studio**.
+- `labs.patch`: a third peer real estate card, **3-D Retail Plaza & Leasing**, with the short tag **CRE studio**.
 - `teaching.patch`: the same card with **FIN 355 · Retail real estate** as its topic.
 - `FIN355-README.patch`: independent project listing beside Site Feasibility Sandbox and the redevelopment case, linking directly to the studio.
 
 All three entries target `https://desenlin.com/ame-quarter/`. Following explicit publication approval, GitHub Pages was enabled and the live studio verified. The entries were merged through [FIN355 PR #8](https://github.com/desenlin/FIN355/pull/8) and [academic-website PR #27](https://github.com/desenlin/desenlin.github.io/pull/27).
 
 These patches record the initial September 24, 2026 integration (America/Los_Angeles). They are historical references, not pending changes; do not reapply them to the current catalog pages.
+
+On September 25, 2026, the live catalog title changed to **3-D Retail Plaza & Leasing** and the description was revised to emphasize the interactive 3-D map. **Ame Quarter** remains the project name. The original patches are retained as integration history.
