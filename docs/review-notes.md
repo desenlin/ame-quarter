@@ -20,14 +20,16 @@
 - Both graphics profiles pass the existing geometry/navigation regression harness: six enterable shops; 18 tour stops; collision-free routes; doors; orbit/walk controls; roof toggles; night/dusk/light changes; streetlight directions; crossings and square scene bounds. Suspension and resume are checked.
 - Three.js geometry and materials are constructed during the scene audit; counts and raw resource estimates are saved in `scene-audit-*.json`.
 
-## Remaining validation before website launch
+## Published-site verification and remaining device checks
 
-The browser preview of the local page was blocked by the browser URL policy. The interface tests use DOM emulation and the scene tests use a mocked renderer, so they do not verify responsive layout in a live browser, actual WebGL compilation, frame rate, browser-specific iframe behavior, or peak graphics memory. Check the final page on desktop Chrome/Safari and a representative student phone before launch.
+After publication approval, the initial GitHub Pages deployment succeeded and the live studio loaded at `https://desenlin.com/ame-quarter/`. Browser checks confirmed premise selection, the landlord activity's default cash flows, loading the embedded scene page, and opening the scene in a separate tab with the selected graphics setting. The cloud browser reports WebGL unavailable and the page presents its fallback message; actual 3-D rendering, frame rate and peak graphics memory could not be tested there.
+
+The earlier local-page preview was blocked by the browser URL policy. Automated interface checks use DOM emulation and scene checks use a mocked renderer. Testing on hardware-accelerated desktop Chrome/Safari and a representative student phone remains useful for device-specific layout and graphics performance.
 
 Do not present modeled rents or physical design features as appraised value, verified market evidence or code-compliant dimensions. All such assumptions are clearly labeled in the page.
 
 ## Integration status
 
-The separate repository is `desenlin/ame-quarter`. The prototype is approved. Prepared Labs/Teaching cards sit immediately after the redevelopment case as a peer of both existing projects. The FIN 355 README row now targets the same planned live studio URL. FIN355 PR #8 and academic-website PR #27 remain unmerged until public hosting is explicitly approved, enabled and verified.
+The separate repository is `desenlin/ame-quarter`. Public hosting was explicitly approved and enabled. Labs/Teaching cards sit immediately after the redevelopment case as a peer of both existing projects. The FIN 355 README row targets the same live studio URL. FIN355 PR #8 and academic-website PR #27 are merged.
 
 The repository includes a versioned citation (`CITATION.cff`) and an explicit rights notice (`LICENSE.md`). No new open reuse license is granted for original project material; third-party and separately licensed components retain their existing terms.

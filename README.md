@@ -4,14 +4,15 @@
 
 An independent retail real estate studio, with a first activity for **FIN 355**. A six-shop Japanese plaza becomes a property to inspect from the perspective of its landlord.
 
-**Status: approved prototype · Version 0.1.0.** The working static page is available in this repository. Public website deployment is pending; the prepared FIN 355, Teaching and Labs entries will link directly to the studio once it is live.
+**Status: published prototype · Version 0.1.0.** [Open the CRE studio](https://desenlin.com/ame-quarter/). The independent project is listed on the FIN 355 course page and the academic website's Teaching and Labs pages.
 
 ## Explore the prototype
 
-1. Serve this folder with `python3 -m http.server 8000`.
-2. Open `http://localhost:8000/` in a current browser.
-3. Select a premise on the ground-floor leasing plan. Read its lease, then open the rent roll or landlord activity.
-4. Choose **Explore 3-D** to enter the existing district. The leasing activity runs without WebGL.
+1. Open the [published studio](https://desenlin.com/ame-quarter/) in a current browser.
+2. Select a premise on the ground-floor leasing plan. Read its lease, then open the rent roll or landlord activity.
+3. Choose **Explore 3-D** to enter the existing district. The leasing activity runs without WebGL.
+
+For local development, serve this folder with `python3 -m http.server 8000` and open `http://localhost:8000/`.
 
 The default **Balanced** graphics profile retains geometry, direct lighting, the two weather/lighting scenes, and a directional shadow. **Full reflections** restores planar reflections, six storefront shadow maps, and higher resolution. The scene pauses when hidden and can be closed to release its iframe. **Open 3-D in new tab** opens the district at full-window size with the selected graphics setting.
 
@@ -43,7 +44,7 @@ All six rent-roll premises are ground-floor retail. Decorative upper structures 
 | `scene/` | Existing Three.js district and bundled renderer |
 | `docs/hosting-audit.md` | GitHub limits, measured sizes and graphics constraints |
 | `docs/review-notes.md` | Prototype decisions and validation scope |
-| `integration/*.patch` | Proposed peer cards and FIN 355 catalog row |
+| `integration/*.patch` | Reference patches for the published peer cards and FIN 355 catalog row |
 
 After editing source, run `python3 build.py`. This refreshes the static entry and writes a portable single-file HTML and source ZIP one directory above the repository. Generated archives, dependency folders, screenshots and exports should not be committed repeatedly.
 
@@ -53,7 +54,7 @@ Run `node tests/model.cjs` for the financial checks. For interface checks, insta
 
 This is a static HTML/CSS/JavaScript project. No server calculations, accounts, databases, analytics or API keys are required. Student inputs remain in the page and reset on reload; downloads are generated locally. The optional Japanese font request uses Google Fonts; the scene has a system-font fallback.
 
-The planned website address is `https://desenlin.com/ame-quarter/`, with a peer **CRE studio** card beside Site Feasibility Sandbox and the redevelopment case. This address is not yet published. The project can grow across courses while retaining a FIN 355 association.
+The website is published at [desenlin.com/ame-quarter/](https://desenlin.com/ame-quarter/) through GitHub Pages, using the `main` branch and repository root. A peer **CRE studio** card sits beside Site Feasibility Sandbox and the redevelopment case. The project can grow across courses while retaining a FIN 355 association.
 
 The complete portable studio is approximately **0.83 MB**; the modular site loads the 3-D scene only when requested. Three.js rendering runs on the visitor's device. GitHub serves static files; it does not render each frame. See the [hosting audit](docs/hosting-audit.md) for file sizes, bandwidth estimates and graphics limits.
 
