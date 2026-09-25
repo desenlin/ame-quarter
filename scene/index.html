@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ame Quarter · District</title><style>html,body{margin:0;background:#17283b}</style></head><body><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@500;600&display=swap">
+<div id="ame-district" tabindex="0" role="region" aria-label="Ame Quarter: six enterable shops in a Japanese plaza. Choose rainy night or after-rain dusk. One: miniature view. Two: walking. Three: guided tour. Drag to look or orbit, scroll to zoom, WASD to walk. H shows controls. R reveals interiors. L rotates the light. V switches the scene.">
+  <span class="sr-only" style="font-family:'Noto Sans JP',sans-serif">雨まち 喫茶 青 こむぎ 月の本棚 夜らーめん みどり花店</span>
+  <nav class="ame-environments" aria-label="Weather and time of day">
+    <button type="button" data-environment="night" aria-pressed="true">Rainy night</button>
+    <button type="button" data-environment="dusk" aria-pressed="false">After rain · Dusk</button>
+  </nav>
+  <div data-help>
+    <nav class="ame-modes" aria-label="Exploration mode">
+      <button type="button" data-mode="mini" aria-pressed="true">Miniature <small>1</small></button>
+      <button type="button" data-mode="walk" aria-pressed="false">Walk <small>2</small></button>
+      <button type="button" data-mode="tour" aria-pressed="false">Tour <small>3</small></button>
+      <button type="button" data-help-button aria-label="Show keyboard and touch controls">?</button>
+    </nav>
+    <span data-status role="status">Building Ame Quarter…</span>
+    <div data-keys hidden>Miniature: drag to orbit, scroll/pinch to zoom, right-drag or two-finger drag to pan. Double-click near a shop to enter walking mode. Walk: WASD, drag to look, or tap the ground to move. Tour: Space pauses; drag takes over. R hides roofs. L rotates/stops the light. V switches night/dusk. H shows controls. Esc returns to the miniature.<div><button type="button" data-action="light">Rotate / hold light</button><button type="button" data-action="roof">Show / hide roofs</button></div></div>
+  </div>
+</div>
+<style>#ame-district {position:relative;width:100%;height:min(82vh,790px);min-height:460px;overflow:hidden;touch-action:none;background:#17283b;color:#f0eadb;font:14px/1.5 system-ui,sans-serif;outline:none;}
+#ame-district canvas {display:block;width:100%;height:100%;touch-action:none;cursor:grab;}
+#ame-district canvas:active {cursor:grabbing;}
+#ame-district [data-help] {position:absolute;left:50%;bottom:18px;transform:translateX(-50%);max-width:calc(100% - 26px);width:max-content;padding:9px 13px;border-radius:12px;background:rgba(24,40,55,.92);box-shadow:0 3px 24px #10213255;text-align:center;transition:opacity .6s;}
+#ame-district [data-help].is-hidden {opacity:0;pointer-events:none;}
+#ame-district [data-help]:focus-within {opacity:1;pointer-events:auto;}
+#ame-district .ame-environments {position:absolute;top:14px;right:14px;display:flex;gap:3px;padding:4px;background:rgba(24,40,55,.94);border-radius:9px;}
+#ame-district[data-environment=dusk] .ame-environments {background:rgba(49,54,62,.94);}
+#ame-district .ame-environments button {padding:7px 10px;}
+#ame-district .ame-modes {display:flex;align-items:center;justify-content:center;gap:5px;}
+#ame-district button {font:inherit;color:#ede9da;background:transparent;border:0;padding:7px 12px;border-radius:7px;cursor:pointer;white-space:nowrap;}
+#ame-district button[aria-pressed=true] {background:#657f8b;color:#fff4d8;}
+#ame-district button:hover {background:#506775;}
+#ame-district button:focus-visible {outline:2px solid #f4d49b;outline-offset:2px;}
+#ame-district [data-status] {display:block;margin-top:5px;color:#cedad9;font-size:12px;}
+#ame-district [data-keys] {max-width:410px;margin:8px auto 2px;color:#e2dbc9;font-size:12px;}
+#ame-district .sr-only {position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
+@media(max-width:600px){#ame-district{height:640px;min-height:420px;max-height:85vh;}#ame-district button{padding:7px 8px;}#ame-district [data-status]{max-width:310px;}}
+@media(prefers-reduced-motion:reduce){#ame-district [data-help]{transition:none;}}
+@media(pointer:coarse){#ame-district .ame-environments button{min-height:44px;}}
+
+#ame-district{height:100vh;max-height:none}</style><script>window.AME_STUDIO_CONFIG={quality:new URLSearchParams(location.search).get("quality")||"balanced"};</script><script src="vendor/three.min.js"></script><script src="vendor/Reflector.js"></script><script src="src/layout.js"></script><script src="src/kit.js"></script><script src="src/lettering.js"></script><script src="src/facades.js"></script><script src="src/elevations.js"></script><script src="src/transit.js"></script><script src="src/traffic.js"></script><script src="src/roofs.js"></script><script src="src/terrace.js"></script><script src="src/life.js"></script><script src="src/shops.js"></script><script src="src/details.js"></script><script src="src/props.js"></script><script src="src/street.js"></script><script src="src/orbit.js"></script><script src="src/navigation.js"></script><script src="src/weather.js"></script><script src="src/environment.js"></script><script src="src/main.js"></script></body></html>

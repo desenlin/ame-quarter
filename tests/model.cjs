@@ -1,0 +1,32 @@
+const assert=require('node:assert/strict');
+const M=require('../studio/model.js');
+const near=(a,b,label)=>assert(Math.abs(a-b)<1e-7,`${label}: ${a} != ${b}`);
+const base={rent:40,growth:0,downtime:0,free:0,ti:0,commission:0};
+assert.deepEqual(M.summary(),{area:3600,base:148500,recoveries:19625,operating:28800,noi:139325});
+near(M.recovery(M.premises.find(p=>p.id==='cafe')),2025,'CAM-only lease');
+near(M.recovery(M.premises.find(p=>p.id==='books')),0,'Gross lease');
+near(M.recovery(M.premises.find(p=>p.id==='florist')),3300,'NNN lease');
+near(M.offer(base,0).npv,88500,'Five years of 18000 rent less 300 owner cost');
+near(M.offer({...base,downtime:12},0).npv,67200,'One vacant year including expenses');
+near(M.offer({...base,free:2},0).npv,85500,'Two rent-free months retain recoveries');
+near(M.offer({...base,ti:20,commission:5},0).npv,75000,'9000 TI and 4500 commission');
+const monthRate=(1.08**(1/12)-1);
+near(M.offer(base,8).npv,1475*(1-(1+monthRate)**-60)/monthRate,'Monthly annuity PV');
+const before=M.offer({...base,downtime:4},8),after=M.offer({...base,downtime:4,ti:20},8);
+near(before.npv-after.npv,9000/1.08**(4/12),'TI starts at occupancy, not decision date');
+const stepped=M.offer({...base,growth:3,downtime:4},0);
+near(stepped.months[15].base,1500,'Month 12 of occupancy');
+near(stepped.months[16].base,1545,'First anniversary increase');
+const longFree=M.offer({...base,growth:3,free:12},0);near(longFree.months[11].base,0,'Last concession month');near(longFree.months[12].base,1545,'Escalation after free year');
+for(const discount of [0,8,25])for(const downtime of [0,4,12,24])for(const free of [0,2,12]){
+  const o=M.offer({...base,downtime,free,commission:6,ti:35,growth:3},discount);
+  near(o.rows.reduce((a,r)=>a+r.cash,0),o.cash,'Annual cash reconciliation');
+  near(o.rows.reduce((a,r)=>a+r.leasing,0),o.cost,'Leasing cost reconciliation');
+  assert(o.months.every(m=>Number.isFinite(m.noi)));assert.equal(o.term,60-downtime);
+  if(discount===0)near(o.npv,o.cash,'Zero-rate NPV equals cash');
+}
+assert(M.offer({...base,downtime:8},8).npv<M.offer({...base,downtime:4},8).npv);
+assert(M.offer({...base,rent:50},8).npv>M.offer(base,8).npv);
+assert.throws(()=>M.offer({...base,rent:NaN}));assert.throws(()=>M.offer({...base,downtime:2.2}));assert.throws(()=>M.offer(base,-1));
+const c=M.compare(M.defaults);assert(c.delta<0,'Default scenario should favor renewal');
+console.log(JSON.stringify({status:'PASS',snapshot:M.summary(),defaultNPV:{renew:c.renew.npv,replace:c.replace.npv,delta:c.delta},checks:'36 timing scenarios, independent annuity, expense recovery, concessions, TI, LC, annual reconciliation, bounds'}));

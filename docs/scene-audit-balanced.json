@@ -1,0 +1,13 @@
+{
+  "mode": "balanced",
+  "meshes": 1306,
+  "instances": 16139,
+  "staticBatches": 322,
+  "uniqueGeometry": 405,
+  "materials": 624,
+  "textures": 166,
+  "geometryBytes": 2437456,
+  "instanceBytes": 1032896,
+  "estimatedRGBA8TextureBytes": 35474917,
+  "note": "Geometry attributes plus indices and instance matrices are raw lower bounds, not peak CPU/GPU memory. Texture estimate excludes render targets and driver overhead. No browser FPS measured."
+}

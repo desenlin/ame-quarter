@@ -1,0 +1,63 @@
+<div id="cre-studio">
+  <div class="topbar" aria-hidden="true"></div>
+  <header class="hero"><div class="hero-inner">
+    <div class="tags"><span class="course-tag">CRE studio</span><span class="case-tag">FIN 355</span><span class="case-tag">Prototype · 01</span></div>
+    <h1>Ame Quarter</h1>
+    <p>A landlord’s view of a Japanese retail plaza. Explore six premises, read the leases, and make the next leasing decision.</p>
+    <p class="creator">Created by Desen Lin · California State University, Fullerton</p>
+  </div></header>
+  <main>
+    <div class="top-actions"><a href="https://desenlin.com/labs.html#real-estate-teaching-tools">← Real estate teaching tools</a><span class="small muted">One property · Six tenants · Hypothetical assumptions</span></div>
+    <nav class="nav" aria-label="Studio sections">
+      <button type="button" data-page="property" aria-pressed="true">Property &amp; premises</button>
+      <button type="button" data-page="leases" aria-pressed="false">Rent roll</button>
+      <button type="button" data-page="activity" aria-pressed="false">Landlord activity</button>
+      <button type="button" data-page="assumptions" aria-pressed="false">Assumptions</button>
+    </nav>
+    <section data-panel="property" aria-labelledby="property-title">
+      <div class="section-head"><div><p class="eyebrow">Own the whole plaza</p><h2 id="property-title">Start with the property.</h2></div><p class="small muted">Lease snapshot · January 1, 2027<br>Annual amounts in USD</p></div>
+      <div class="stats" id="property-stats"></div>
+      <div class="property-grid">
+        <div class="card property-card">
+          <div class="section-head"><div><h3>Ground-floor leasing plan</h3><p class="small muted">Select a premise to inspect its lease.</p></div><div class="view-switch" aria-label="Property view"><button type="button" data-view="plan" aria-pressed="true">Leasing plan</button><button type="button" data-view="scene" aria-pressed="false">Explore 3-D</button></div></div>
+          <div id="plan-wrap"><div id="leasing-plan" class="leasing-plan" aria-label="Schematic plan of the six ground-floor retail premises">
+            <span class="north">N ↑</span><div class="landscape north-garden"></div><div class="courtyard"><span>AME QUARTER<br><small>Shared plaza</small></span></div><div class="tree tree-one"></div><div class="tree tree-two"></div><div class="patio">Café terrace</div>
+            <div class="parking"><span>Parking</span><i></i><i></i><i></i></div><div class="south-street">South street · Bus stop</div><div class="east-street">East street</div>
+            <div id="plan-units"></div>
+          </div><div class="plan-key"><span><i class="key-selected"></i>Selected premise</span><span><i class="key-expiry"></i>Next expiration · 2027</span><span>Ground floor only · schematic</span></div></div>
+          <div id="scene-wrap" hidden><div class="scene-tools"><label for="scene-quality">Graphics</label><select id="scene-quality"><option value="balanced">Balanced</option><option value="full">Full reflections</option></select><button type="button" id="visit-unit">Visit selected premise</button><button type="button" id="close-scene">Close 3-D</button></div><div id="scene-host"><p class="muted">Opening the district…</p></div><p class="small muted scene-note">Drag to orbit; scroll to zoom. Use Walk or Tour to enter the stores. Lease details remain available in the premise selector.</p></div>
+        </div>
+        <aside class="card lease-panel" aria-labelledby="lease-title"><div class="section-head"><p class="eyebrow">Premise file</p><span id="unit-number" class="badge"></span></div>
+          <label class="sr-only" for="premise-select">Choose a premise</label><select id="premise-select"></select><h2 id="lease-title"></h2><p id="lease-use" class="muted"></p>
+          <div id="lease-facts"></div><div class="lease-total"><span>Annual base rent</span><strong id="lease-base"></strong></div>
+          <details id="lease-details"><summary>Lease terms &amp; recoveries</summary><dl id="lease-terms"></dl><p class="small muted">Recoveries use the teaching budget and each tenant’s share of total rentable area.</p></details>
+          <p id="premise-note" class="small muted"></p><button type="button" class="primary" id="premise-activity">Study the florist’s renewal →</button>
+        </aside>
+      </div>
+      <div class="activity-invite"><div><p class="eyebrow">First landlord decision</p><h3>Midori’s lease ends in December 2027.</h3><p>Would a higher asking rent justify losing the tenant? Test the cost of an empty shop before making your recommendation.</p></div><button type="button" class="primary" data-open-activity>Compare the offers →</button></div>
+    </section>
+    <section data-panel="leases" hidden aria-labelledby="roll-title"><div class="section-head"><div><p class="eyebrow">The whole property</p><h2 id="roll-title">Rent roll &amp; lease expirations</h2></div><button type="button" id="export-roll">Download rent roll</button></div>
+      <div class="card"><div class="table-wrap"><table><caption>Contract rents as of January 1, 2027 · all six premises occupied</caption><thead><tr><th scope="col">Premise</th><th scope="col" class="num">Area · SF</th><th scope="col" class="num">Rent / SF / year</th><th scope="col" class="num">Annual base</th><th scope="col">Recoveries</th><th scope="col">Expires</th></tr></thead><tbody id="rent-roll"></tbody><tfoot id="rent-roll-total"></tfoot></table></div></div>
+      <div class="two-col"><div class="card"><h3>When does the space roll over?</h3><p class="small muted">Share of rentable area expiring each calendar year</p><div id="expiry-chart"></div></div><div class="card"><h3>Annual landlord operating snapshot</h3><dl id="property-income" class="income"></dl><p class="small muted">Contractual run rate, before vacancy, debt service and capital costs. This is not a five-year property forecast.</p></div></div>
+    </section>
+    <section data-panel="activity" hidden aria-labelledby="activity-title">
+      <p class="eyebrow">Activity 01 · Leasing a 450 SF premise</p><h2 id="activity-title">Keep Midori, or re-lease the space?</h2>
+      <p class="intro">You own the entire plaza. Midori’s lease expires on December 31, 2027. Compare two offers over the same five calendar years, January 2028–December 2032, then explain your choice.</p>
+      <div class="activity-context"><span>Current rent <b>$36 / SF / year</b></span><span>Recovery basis <b>NNN</b></span><span>Decision date <b>January 1, 2028</b></span></div>
+      <div class="offer-grid" id="offer-forms"></div>
+      <div class="comparison-controls"><label class="field" for="discount"><span>Annual discount rate · %</span><input id="discount" type="number" min="0" max="25" step="0.5" value="8"></label><button type="button" id="reset-offers">Reset assumptions</button><button type="button" id="export-scenario">Download comparison</button></div>
+      <p id="input-error" role="alert" hidden></p>
+      <div id="comparison-results" aria-live="polite"></div>
+      <div class="card"><h3>Follow the landlord’s cash flows</h3><p class="small muted">USD · selected premise only · TI and commissions are below NOI</p><div class="table-wrap"><table class="cash-table"><caption>Common calendar-year comparison</caption><thead><tr><th scope="col">Year</th><th scope="col" class="num">Renew · NOI</th><th scope="col" class="num">Renew · leasing costs</th><th scope="col" class="num">Renew · net cash</th><th scope="col" class="num">Re-lease · NOI</th><th scope="col" class="num">Re-lease · leasing costs</th><th scope="col" class="num">Re-lease · net cash</th></tr></thead><tbody id="cash-flow"></tbody></table></div>
+        <details><summary>How the comparison is calculated</summary><p>Operating cash flows arrive at each month-end. Rent increases on each lease anniversary. Free rent begins when the tenant takes possession; recoveries are still paid during free rent. During downtime the landlord pays all allocated operating expenses without rent or recoveries.</p><p>Tenant improvements (TI) and leasing commissions are paid at the start of occupancy. Commission is a percentage of scheduled base rent before concessions, over the remaining months through December 2032. Both alternatives end on that date, so downtime shortens the new lease. No renewal, sale proceeds or residual value is assumed.</p><p>The monthly discount rate is (1 + annual discount rate)<sup>1/12</sup> − 1. NPV includes monthly NOI less the separately timed leasing costs. Fixed allocated operating expenses are $3,600 per year; occupied NNN recoveries are $3,300 per year. All other tenants are held constant and excluded from this incremental comparison.</p></details>
+      </div>
+      <div class="card recommendation"><h3>Make your recommendation</h3><ol><li>Which offer creates more value under your assumptions?</li><li>How much downtime or tenant improvement cost would change your decision?</li><li>What would you investigate about tenant credit, market rent, and the tenant mix before committing?</li></ol><label class="field" for="recommendation"><span>Your reasoning</span><textarea id="recommendation" placeholder="State your choice, support it with cash-flow evidence, and identify one assumption to verify."></textarea></label><p class="small muted">Your note is included in the comparison download. Inputs remain in this tab and reset when the page is reloaded.</p></div>
+    </section>
+    <section data-panel="assumptions" hidden aria-labelledby="assumptions-title"><p class="eyebrow">Read the model</p><h2 id="assumptions-title">A teaching property, with explicit assumptions.</h2>
+      <div class="two-col"><div class="card"><h3>Property &amp; leases</h3><ul><li>A single landlord owns the six-premise plaza and its shared spaces.</li><li>All tenant identities, areas, rents, lease dates and expenses are hypothetical. They are not market comparables or actual leases.</li><li>The 3,600 SF rent roll covers ground-floor retail only. The model’s decorative upper structures are not additional rentable premises. Areas are rounded teaching inputs, not surveyed measurements.</li><li>Courtyard, terrace, landscaping, streets and parking are excluded from rentable area. The visual design does not establish zoning, parking, accessibility or building-code compliance.</li><li>Rents are stated in USD per SF per year. Current rates apply January 1, 2027; annual lease increases occur each January 1 in the existing rent roll.</li><li>No percentage rent, rent arrears, options, deposits or credit losses are modeled. Displayed rent roll amounts are contractual annual run rates.</li></ul></div>
+      <div class="card"><h3>Expenses &amp; recoveries</h3><dl id="budget-detail" class="income"></dl><p>NNN tenants reimburse their area share of taxes, insurance and common-area maintenance (CAM). Kissa Ao reimburses CAM only. Tsuki Books pays gross rent with no separate reimbursement. Owner administration is never recovered.</p><p class="small muted">No expense inflation, recovery caps, exclusions, base years or annual reconciliations are modeled. Utilities are paid directly by tenants. Repairs to tenant equipment are excluded.</p></div></div>
+      <div class="card"><h3>What the studio can—and cannot—tell you</h3><p>The model connects premises, contractual income and leasing cash flows. Physical features may prompt questions about access, visibility and customer experience; they do not automatically increase rent or sales in this model. Any offered rent must be supplied as an explicit assumption.</p><p>The first activity compares two leases for one premise. It does not value the whole property and includes no financing, tax effects, appreciation or terminal sale. Financial calculations work without 3-D graphics; the district opens only when requested.</p><p class="small muted">Prototype scope: property inspection, rent roll, lease expirations, one landlord decision and CSV exports. Future activities can add operating budgets, tenant mix, capital improvements and property-level underwriting.</p></div>
+    </section>
+  </main>
+  <footer><strong>Created by <a href="https://desenlin.com/">Desen Lin</a></strong> · California State University, Fullerton<br>CRE studio · An independent project, with activities for FIN 355.<br><span>Hypothetical educational illustration. Not an appraisal or investment recommendation.</span></footer>
+</div>

@@ -1,0 +1,14 @@
+--- a/README.md
++++ b/README.md
+@@ -32,6 +32,11 @@
+       <td><strong>Retail-to-Residential Redevelopment</strong><br><small>Case Study</small></td>
+       <td>Connects a real redevelopment’s public planning and acquisition history with a site schematic, nearby apartment comparisons, commercial lease NPV, and separate build-to-rent construction and operating pro formas with hypothetical assumptions.</td>
+       <td><a href="https://desenlin.com/FIN355/atlas-fullerton-case.html">Explore the case study</a></td>
++    </tr>
++    <tr>
++      <td><strong>Ame Quarter</strong><br><small>CRE studio · FIN 355</small></td>
++      <td>Explores a six-shop plaza from the landlord’s perspective, connecting premises and hypothetical leases to a rent roll, lease expirations, and a renewal-versus-re-leasing cash-flow activity. Maintained as an independent project.</td>
++      <td><a href="https://github.com/desenlin/ame-quarter">Explore the prototype project</a></td>
+     </tr>
+     <tr>
+       <td><strong>Market Research Explorer</strong></td>
