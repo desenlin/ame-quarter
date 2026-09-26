@@ -1,0 +1,42 @@
+{
+  "site_url": "https://desenlin.com/ame-quarter/",
+  "measurement_id": "G-MDGMSFPEH2",
+  "mode": "html",
+  "tracker": "assets/analytics.js",
+  "project": "ame-quarter",
+  "exclude": {
+    "studio/shell.html": "Build fragment; build.py emits a tracked production entry.",
+    "scene/fragment.html": "Build fragment; standalone scene is tracked, embedded scene suppresses its own tracking."
+  },
+  "smoke": [
+    {
+      "path": "",
+      "actions": [
+        {
+          "selector": "button[data-view=\"plan\"]",
+          "event": "view_change",
+          "value": "plan"
+        },
+        {
+          "selector": "#premise-select",
+          "select": "cafe",
+          "event": "premise_select",
+          "value": "cafe"
+        },
+        {
+          "selector": "button[data-page=\"activity\"]",
+          "event": "section_view",
+          "value": "activity"
+        },
+        {
+          "selector": "#renew-rent",
+          "fill": "40",
+          "event": "assumption_change"
+        }
+      ]
+    },
+    {
+      "path": "scene/index.html"
+    }
+  ]
+}

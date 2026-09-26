@@ -23,12 +23,13 @@ payload='<script id="cre-scene-source" type="application/json">'+json.dumps(scen
 standalone=head+'<style>'+css+'</style></head><body>'+shell+payload+'<script>'+code+'</script></body></html>'
 (P.parent/'ame-quarter-cre-studio.html').write_text(standalone)
 # Production entry is modular: engine, geometry and textures load only on opening 3-D.
+analytics='<script defer src="assets/analytics.js" data-ga-id="G-MDGMSFPEH2" data-project="ame-quarter"></script>'
 modular_app=(P/'studio/app.js').read_text()
 (P/'studio/app.modular.js').write_text(modular_app)
 modular_shell=shell.replace('<div id="cre-studio">','<div id="cre-studio" data-scene-url="scene/index.html">',1)
-(P/'index.html').write_text(head+'<link rel="stylesheet" href="studio/style.css"></head><body>'+modular_shell+'<script src="studio/model.js"></script><script src="studio/app.modular.js"></script></body></html>')
+(P/'index.html').write_text(head+analytics+'<link rel="stylesheet" href="studio/style.css"></head><body>'+modular_shell+'<script src="studio/model.js"></script><script src="studio/app.modular.js"></script></body></html>')
 scene_config='<script>window.AME_STUDIO_CONFIG={quality:new URLSearchParams(location.search).get("quality")||"balanced"};</script>'
-(scene/'index.html').write_text(scene_head+scene_fragment+scene_styles+scene_config+'<script src="vendor/three.min.js"></script><script src="vendor/Reflector.js"></script>'+''.join('<script src="src/'+name+'.js"></script>' for name in order)+'</body></html>')
+(scene/'index.html').write_text(scene_head.replace('</head>',analytics.replace('src="assets/', 'src="../assets/')+'</head>')+scene_fragment+scene_styles+scene_config+'<script src="vendor/three.min.js"></script><script src="vendor/Reflector.js"></script>'+''.join('<script src="src/'+name+'.js"></script>' for name in order)+'</body></html>')
 if args.inline_output:
     fragment=shell+'<style>'+css+'</style>'+payload+'<script>'+code+'</script>'
     assert len(fragment.encode())<1_000_000,'Inline preview exceeds 1 MB'

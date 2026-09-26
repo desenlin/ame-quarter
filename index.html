@@ -1,4 +1,4 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ame Quarter | CRE studio</title><meta name="description" content="An interactive retail real estate studio: explore a six-shop plaza, read its hypothetical leases, and compare landlord leasing decisions."><style>html,body{margin:0}</style><link rel="stylesheet" href="studio/style.css"></head><body><div id="cre-studio" data-scene-url="scene/index.html">
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ame Quarter | CRE studio</title><meta name="description" content="An interactive retail real estate studio: explore a six-shop plaza, read its hypothetical leases, and compare landlord leasing decisions."><style>html,body{margin:0}</style><script defer src="assets/analytics.js" data-ga-id="G-MDGMSFPEH2" data-project="ame-quarter"></script><link rel="stylesheet" href="studio/style.css"></head><body><div id="cre-studio" data-scene-url="scene/index.html">
   <div class="topbar" aria-hidden="true"></div>
   <header class="hero"><div class="hero-inner">
     <div class="tags"><span class="course-tag">FIN 355 · Real Estate Investment Analysis</span><span class="case-tag">CRE studio</span></div>
@@ -8,11 +8,11 @@
   </div></header>
   <main>
     <nav class="nav" aria-label="Studio sections">
-      <button type="button" data-page="property" aria-pressed="true">Property &amp; premises</button>
-      <button type="button" data-page="leases" aria-pressed="false">Rent roll</button>
-      <button type="button" data-page="activity" aria-pressed="false">Landlord activity</button>
-      <button type="button" data-page="assumptions" aria-pressed="false">Assumptions</button>
-      <button type="button" data-page="rendering" aria-pressed="false">How 3-D works</button>
+      <button type="button" data-page="property" data-analytics-action="section_view" data-analytics-value="property" aria-pressed="true">Property &amp; premises</button>
+      <button type="button" data-page="leases" data-analytics-action="section_view" data-analytics-value="leases" aria-pressed="false">Rent roll</button>
+      <button type="button" data-page="activity" data-analytics-action="section_view" data-analytics-value="activity" aria-pressed="false">Landlord activity</button>
+      <button type="button" data-page="assumptions" data-analytics-action="section_view" data-analytics-value="assumptions" aria-pressed="false">Assumptions</button>
+      <button type="button" data-page="rendering" data-analytics-action="section_view" data-analytics-value="rendering" aria-pressed="false">How 3-D works</button>
     </nav>
     <p class="scope-note">One property · Six tenants · Hypothetical assumptions</p>
     <section data-panel="property" aria-labelledby="property-title">
@@ -20,25 +20,25 @@
       <div class="stats" id="property-stats"></div>
       <div class="property-grid">
         <div class="card property-card">
-          <div class="section-head"><div><h3 id="property-view-title">Explore the retail plaza</h3><p id="property-view-help" class="small muted">Orbit the plaza, tour its shops, or visit the selected premise.</p></div><div class="view-switch" aria-label="Property view"><button type="button" data-view="scene" aria-pressed="true">Explore 3-D Map</button><button type="button" data-view="plan" aria-pressed="false">Leasing plan</button></div></div>
+          <div class="section-head"><div><h3 id="property-view-title">Explore the retail plaza</h3><p id="property-view-help" class="small muted">Orbit the plaza, tour its shops, or visit the selected premise.</p></div><div class="view-switch" aria-label="Property view"><button type="button" data-view="scene" data-analytics-action="view_change" data-analytics-value="scene" aria-pressed="true">Explore 3-D Map</button><button type="button" data-view="plan" data-analytics-action="view_change" data-analytics-value="plan" aria-pressed="false">Leasing plan</button></div></div>
           <p id="scene-notice" class="small scene-notice" role="status" hidden></p>
           <div id="plan-wrap" hidden><div id="leasing-plan" class="leasing-plan" aria-label="Schematic plan of the six ground-floor retail premises">
             <span class="north">N ↑</span><div class="landscape north-garden"></div><div class="courtyard"><span>AME QUARTER<br><small>Shared plaza</small></span></div><div class="tree tree-one"></div><div class="tree tree-two"></div><div class="patio">Café terrace</div>
             <div class="parking"><span>Parking</span><i></i><i></i><i></i></div><div class="south-street">South street · Bus stop</div><div class="east-street">East street</div>
             <div id="plan-units"></div>
           </div><div class="plan-key"><span><i class="key-selected"></i>Selected premise</span><span><i class="key-expiry"></i>Next expiration · 2027</span><span>Ground floor only · schematic</span></div></div>
-          <div id="scene-wrap"><div class="scene-tools"><label for="scene-quality">Graphics</label><select id="scene-quality"><option value="balanced">Balanced</option><option value="full">Full reflections</option></select><button type="button" id="visit-unit" disabled>Visit selected premise</button><a class="button" id="open-scene-tab" href="#" target="_blank" rel="noopener noreferrer">Open 3-D in new tab ↗</a></div><div id="scene-host"><p class="muted">Opening the district…</p></div><p class="small muted scene-note">Drag to orbit; scroll to zoom. Use Walk or Tour to enter the stores. Choose Leasing plan to stop 3-D and inspect individual leases, or open a separate tab for a full-window view.</p></div>
+          <div id="scene-wrap"><div class="scene-tools"><label for="scene-quality">Graphics</label><select id="scene-quality" data-analytics-action="graphics_change" data-analytics-allowed="balanced,full"><option value="balanced">Balanced</option><option value="full">Full reflections</option></select><button type="button" id="visit-unit" data-analytics-action="premise_visit" disabled>Visit selected premise</button><a class="button" id="open-scene-tab" data-analytics-action="scene_open_tab" href="#" target="_blank" rel="noopener noreferrer">Open 3-D in new tab ↗</a></div><div id="scene-host"><p class="muted">Opening the district…</p></div><p class="small muted scene-note">Drag to orbit; scroll to zoom. Use Walk or Tour to enter the stores. Choose Leasing plan to stop 3-D and inspect individual leases, or open a separate tab for a full-window view.</p></div>
         </div>
         <aside class="card lease-panel" aria-labelledby="lease-title"><div class="section-head"><p class="eyebrow">Premise file</p><span id="unit-number" class="badge"></span></div>
-          <label class="sr-only" for="premise-select">Choose a premise</label><select id="premise-select"></select><h2 id="lease-title"></h2><p id="lease-use" class="muted"></p>
+          <label class="sr-only" for="premise-select">Choose a premise</label><select id="premise-select" data-analytics-action="premise_select" data-analytics-allowed="mart,cafe,bakery,books,ramen,florist"></select><h2 id="lease-title"></h2><p id="lease-use" class="muted"></p>
           <div id="lease-facts"></div><div class="lease-total"><span>Annual base rent</span><strong id="lease-base"></strong></div>
           <details id="lease-details"><summary>Lease terms &amp; recoveries</summary><dl id="lease-terms"></dl><p class="small muted">Recoveries use the teaching budget and each tenant’s share of total rentable area.</p></details>
-          <p id="premise-note" class="small muted"></p><button type="button" class="primary" id="premise-activity">Study the florist’s renewal →</button>
+          <p id="premise-note" class="small muted"></p><button type="button" class="primary" id="premise-activity" data-analytics-action="section_view" data-analytics-value="activity">Study the florist’s renewal →</button>
         </aside>
       </div>
-      <div class="activity-invite"><div><p class="eyebrow">First landlord decision</p><h3>Midori’s lease ends in December 2027.</h3><p>Would a higher asking rent justify losing the tenant? Test the cost of an empty shop before making your recommendation.</p></div><button type="button" class="primary" data-open-activity>Compare the offers →</button></div>
+      <div class="activity-invite"><div><p class="eyebrow">First landlord decision</p><h3>Midori’s lease ends in December 2027.</h3><p>Would a higher asking rent justify losing the tenant? Test the cost of an empty shop before making your recommendation.</p></div><button type="button" class="primary" data-open-activity data-analytics-action="section_view" data-analytics-value="activity">Compare the offers →</button></div>
     </section>
-    <section data-panel="leases" hidden aria-labelledby="roll-title"><div class="section-head"><div><p class="eyebrow">The whole property</p><h2 id="roll-title">Rent roll &amp; lease expirations</h2></div><button type="button" id="export-roll">Download rent roll</button></div>
+    <section data-panel="leases" hidden aria-labelledby="roll-title"><div class="section-head"><div><p class="eyebrow">The whole property</p><h2 id="roll-title">Rent roll &amp; lease expirations</h2></div><button type="button" id="export-roll" data-analytics-action="rent_roll_download">Download rent roll</button></div>
       <div class="card"><div class="table-wrap"><table><caption>Contract rents as of January 1, 2027 · all six premises occupied</caption><thead><tr><th scope="col">Premise</th><th scope="col" class="num">Area · SF</th><th scope="col" class="num">Rent / SF / year</th><th scope="col" class="num">Annual base</th><th scope="col">Recoveries</th><th scope="col">Expires</th></tr></thead><tbody id="rent-roll"></tbody><tfoot id="rent-roll-total"></tfoot></table></div></div>
       <div class="two-col"><div class="card"><h3>When does the space roll over?</h3><p class="small muted">Share of rentable area expiring each calendar year</p><div id="expiry-chart"></div></div><div class="card"><h3>Annual landlord operating snapshot</h3><dl id="property-income" class="income"></dl><p class="small muted">Contractual run rate, before vacancy, debt service and capital costs. This is not a five-year property forecast.</p></div></div>
     </section>
@@ -47,7 +47,7 @@
       <p class="intro">You own the entire plaza. Midori’s lease expires on December 31, 2027. Compare two offers over the same five calendar years, January 2028–December 2032, then explain your choice.</p>
       <div class="activity-context"><span>Current rent <b>$36 / SF / year</b></span><span>Recovery basis <b>NNN</b></span><span>Decision date <b>January 1, 2028</b></span></div>
       <div class="offer-grid" id="offer-forms"></div>
-      <div class="comparison-controls"><label class="field" for="discount"><span>Annual discount rate · %</span><input id="discount" type="number" min="0" max="25" step="0.5" value="8"></label><button type="button" id="reset-offers">Reset assumptions</button></div>
+      <div class="comparison-controls"><label class="field" for="discount"><span>Annual discount rate · %</span><input id="discount" data-analytics-action="assumption_change" data-analytics-once="true" data-analytics-value="discount" type="number" min="0" max="25" step="0.5" value="8"></label><button type="button" id="reset-offers" data-analytics-action="assumptions_reset">Reset assumptions</button></div>
       <p id="input-error" role="alert" hidden></p>
       <div id="comparison-results" aria-live="polite"></div>
       <div class="card"><h3>Follow the landlord’s cash flows</h3><p class="small muted">USD · selected premise only · TI and commissions are below NOI</p><div class="table-wrap"><table class="cash-table"><caption>Common calendar-year comparison</caption><thead><tr><th scope="col">Year</th><th scope="col" class="num">Renew · NOI</th><th scope="col" class="num">Renew · leasing costs</th><th scope="col" class="num">Renew · net cash</th><th scope="col" class="num">Re-lease · NOI</th><th scope="col" class="num">Re-lease · leasing costs</th><th scope="col" class="num">Re-lease · net cash</th></tr></thead><tbody id="cash-flow"></tbody></table></div>
@@ -73,4 +73,5 @@
   </main>
   <footer><strong>Created by Desen Lin</strong> for instructional purposes in FIN 355 at California State University, Fullerton.<br>This educational illustration is not financial, investment, tax, legal, or appraisal advice.</footer>
 </div>
+
 <script src="studio/model.js"></script><script src="studio/app.modular.js"></script></body></html>

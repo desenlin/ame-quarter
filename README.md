@@ -52,7 +52,7 @@ Run `node tests/model.cjs` for the financial checks. For interface checks, insta
 
 ## Hosting and scope
 
-This is a static HTML/CSS/JavaScript project. No server calculations, accounts, databases, analytics or API keys are required. Student inputs remain in the page and reset on reload; downloads are generated locally. The optional Japanese font request uses Google Fonts; the scene has a system-font fallback.
+This is a static HTML/CSS/JavaScript project. No server calculations, accounts, databases or API keys are required. The published website uses Google Analytics 4 for page views, activity starts and selected interactions. Entered assumptions and written answers are not included in custom analytics events. The embedded 3-D frame does not send a second page view; opening the scene in a separate tab records a separate page view. The portable review copy does not include tracking. Student inputs remain in the page and reset on reload; downloads are generated locally. The optional Japanese font request uses Google Fonts; the scene has a system-font fallback.
 
 The website is published at [desenlin.com/ame-quarter/](https://desenlin.com/ame-quarter/) through GitHub Pages, using the `main` branch and repository root. A peer **CRE studio** card sits beside Site Feasibility Sandbox and the redevelopment case. The project can grow across courses while retaining a FIN 355 association.
 
