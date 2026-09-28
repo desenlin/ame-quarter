@@ -7,3 +7,7 @@
 @media print{#cre-studio .hero{background:white;color:var(--navy)}#cre-studio h1,#cre-studio .hero p{color:var(--navy)}#cre-studio .nav,#cre-studio button,#cre-studio .button,#cre-studio #scene-wrap{display:none!important}#cre-studio .card{box-shadow:none;break-inside:avoid}#cre-studio .property-grid,#cre-studio .two-col{display:block}#cre-studio .table-wrap{overflow:visible}#cre-studio [data-panel][hidden]{display:none!important}}
 #cre-studio .scene-notice{padding:12px 14px;background:#fff7ed;border-left:3px solid var(--orange);color:var(--navy)}
 @media print{#cre-studio #plan-wrap[hidden]{display:block!important}}
+
+
+/* Instructional materials remain readable at narrow widths. */
+#cre-studio .assignment-brief{margin:20px 0}#cre-studio [data-panel="learning"] .card{margin-bottom:20px}#cre-studio [data-panel="learning"] li,#cre-studio .recommendation li{margin-bottom:.65em}#cre-studio .nav{flex-wrap:wrap}

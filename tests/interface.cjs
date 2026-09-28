@@ -42,6 +42,8 @@ async function check(mode){
   input('#replace-rent','46');input('#replace-downtime','2.5');assert.equal($('#input-error').hidden,false);
   $('#reset-offers').click();assert.equal($('#input-error').hidden,true);assert.equal($('#replace-downtime').value,'4');assert($('#comparison-results').textContent.includes('Renewal leads'));
   $('[data-page="rendering"]').click();assert.equal($('[data-panel="rendering"]').hidden,false);assert.equal($('[data-panel="activity"]').hidden,true);assert.equal($('[data-page="rendering"]').getAttribute('aria-pressed'),'true');
+  assert.equal($$('.nav [data-page]').at(-1).dataset.page,'learning');
+  $('[data-page="learning"]').click();assert.equal($('[data-panel="learning"]').hidden,false);assert.equal($('[data-panel="rendering"]').hidden,true);assert($('[data-panel="learning"] a[href="teaching/student-workbook.xlsx"]'));
   $('[data-page="property"]').click();$('[data-view="scene"]').click();assert.equal($('#scene-wrap').hidden,false);assert($('#scene-host iframe'));
   const link=$('#open-scene-tab');assert.equal(link.target,'_blank');assert(link.rel.includes('noopener'));
   link.addEventListener('click',e=>e.preventDefault());
@@ -67,3 +69,4 @@ async function check(mode){
   w.close();
 }
 (async()=>{await check('portable');await check('modular');})().catch(e=>{console.error(e);process.exitCode=1;});
+

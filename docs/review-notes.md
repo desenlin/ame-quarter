@@ -34,3 +34,10 @@ Do not present modeled rents or physical design features as appraised value, ver
 The separate repository is `desenlin/ame-quarter`. Public hosting was explicitly approved and enabled. Labs/Teaching cards sit immediately after the redevelopment case as a peer of both existing projects. The FIN 355 README row targets the same live studio URL. FIN355 PR #8 and academic-website PR #27 are merged.
 
 The repository includes a versioned citation (`CITATION.cff`) and an explicit rights notice (`LICENSE.md`). No new open reuse license is granted for original project material; third-party and separately licensed components retain their existing terms.
+
+
+## Classroom case update September 28 2026
+
+Version 0.2.0 adds the final Learning guide tab, an assignment brief, a printable student handout, and a blank calculation workbook. Existing financial conventions and the initial property view are preserved. The student workbook contains no solution formulas. Public materials ask for a memo, an auditable calculation trail, a decision boundary, and specific diligence requests. Instructor answers and assessment variants remain outside this repository. A limited classroom permission applies to the student materials only.
+
+Verification for this update: existing model tests passed, including 36 timing scenarios; static checks passed for navigation, local links, unique IDs, and student workbook separation. The interface regression test was extended for the Learning guide. DOM emulation was unavailable in the authoring environment, so that test was not rerun there. Live browser checks follow deployment.

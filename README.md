@@ -4,7 +4,7 @@
 
 An independent retail real estate studio, with a first activity for **FIN 355**. A six-shop Japanese plaza becomes a property to inspect from the perspective of its landlord.
 
-**Status: published prototype · Version 0.1.1.** [Open the CRE studio](https://desenlin.com/ame-quarter/). The project remains **Ame Quarter**; its public tool-card title is **3-D Retail Plaza & Leasing**, with the **CRE studio** tag. It is listed on the FIN 355 course page and the academic website's Teaching and Labs pages.
+**Status: published prototype · Version 0.2.0.** [Open the CRE studio](https://desenlin.com/ame-quarter/). The project remains **Ame Quarter**; its public tool-card title is **3-D Retail Plaza & Leasing**, with the **CRE studio** tag. It is listed on the FIN 355 course page and the academic website's Teaching and Labs pages.
 
 ## Explore the prototype
 
@@ -70,7 +70,7 @@ This educational illustration is not financial, investment, tax, legal, or appra
 
 GitHub's **Cite this repository** feature uses [`CITATION.cff`](CITATION.cff). Suggested citation:
 
-> Lin, D. (2026). *Ame Quarter: CRE studio* (Version 0.1.1) [Computer software]. https://github.com/desenlin/ame-quarter
+> Lin, D. (2026). *Ame Quarter: CRE studio* (Version 0.2.0) [Computer software]. https://github.com/desenlin/ame-quarter
 
 For reproducible discussion of a particular result, also record the commit used and the edited assumptions. Citation acknowledges the source; it does not grant reuse rights.
 
@@ -89,3 +89,14 @@ See [ATTRIBUTION.md](ATTRIBUTION.md) for sources and scope. University names and
 ## Maintenance
 
 Keep application changes focused, run the relevant checks, and regenerate the static entry with `python3 build.py` when source files change. Do not commit development dependencies, generated archives, credentials or student information. This prototype has no account system, stored submissions or backend data service.
+
+
+## Complete classroom case
+
+The final **Learning guide** tab provides learning objectives, prerequisites, an activity sequence, and adoption guidance. The **Landlord activity** gives the role, decision horizon, and required memo plus calculation sheet.
+
+- [Student handout](teaching/student-handout.html): printable, complete data and assignment.
+- [Student workbook](teaching/student-workbook.xlsx): inputs and blank calculation schedules.
+- [Classroom use permission](teaching/README.md): applies only to the two student materials above.
+
+Worked answers, grading notes, and assessment variants are kept outside this public repository. The default calculator is a demonstration, so assessment should require reasoning and an auditable calculation trail. No student survey or learning-effectiveness claim is part of the case.

@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "If you reference this instructional software, please cite it using the metadata below. Citation does not grant reuse rights; see LICENSE.md."
 title: "Ame Quarter: CRE studio"
 type: software
-version: 0.1.1
-date-released: 2026-09-25
+version: 0.2.0
+date-released: 2026-09-28
 authors:
   - family-names: Lin
     given-names: Desen
@@ -23,3 +23,4 @@ abstract: >-
   six-shop Japanese plaza with hypothetical premises, leases, a rent roll,
   and a landlord renewal-versus-re-leasing cash-flow activity. The independent
   project supports FIN 355 instruction at California State University, Fullerton.
+
